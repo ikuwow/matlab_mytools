@@ -28,10 +28,7 @@ s = zeros(size(MPDict,2),1);
 
 % main loop
 for itr = 2:sparseN+1
-    tmp_resid = zeros(size(MPDict,2),1);
-    for dictRow = 1:size(MPDict,2)
-        tmp_resid(dictRow) = MPDict(:,dictRow)' * residual(:,itr-1);
-    end
+    tmp_resid = MPDict'*residual(:,itr-1);
     [~, idx] = max(tmp_resid);
     s(idx) = MPDict(:,idx)'*residual(:,itr-1);
     residual(:,itr) = residual(:,itr-1) - s(idx) * MPDict(:,idx);
