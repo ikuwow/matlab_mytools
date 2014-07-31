@@ -1,5 +1,6 @@
 % addpath('~/Documents/MATLAB/matlab-midi-master/src');
 addpath('~/Documents/MATLAB/MyTools');
+addpath('~/Documents/MATLAB/AutoShared/Vendor');
 % addpath('~/Documents/MATLAB/3Dimage_engineering/');
 % addpath('~/Documents/MATLAB/Bilateral_Filtering/');
 % addpath('~/Documents/MATLAB/multipitch_estimation/');
