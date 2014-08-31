@@ -8,7 +8,7 @@
 % - patchsize: the patch size (NxN, scalar)
 % 
 % Outputs: 
-% - Hp: linear indices of patch (patchsize x patchsize matrix. Why not vector?) 
+% - Hp: linear indices of patch (1d vector) 
 % - rows: linear indices rows of patch of size 'patchsize'
 % - cols: linear indices cols of patch of size 'patchsize'
 %
@@ -19,7 +19,8 @@ function [Hp,rows,cols] = getPatch(imageSize,center,patchsize)
     w=(patchsize-1)/2; center=center-1; y=floor(center/imageSize(1))+1; center=rem(center,imageSize(1)); x=floor(center)+1;
     rows = max(x-w,1):min(x+w,imageSize(1));
     cols = (max(y-w,1):min(y+w,imageSize(2)))';
-    Hp = sub2ndx(rows,cols,imageSize(1));
+    Hp_ = sub2ndx(rows,cols,imageSize(1))';
+    Hp = Hp_(:);
 end
 
 function N = sub2ndx(rows,cols,nTotalRows)
