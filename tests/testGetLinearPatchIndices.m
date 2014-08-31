@@ -12,19 +12,29 @@ psz = 9;
 % 1. costly calculation
 % (It must reserve big memory spaces)
 tic
-w = (psz-1)/2;
-psub = zeros(2,1);
-[psub(1),psub(2)] = ind2sub(size(image),plin);
-mask = zeros(size(image));
-mask(psub(1)-w:psub(1)+w,psub(2)-w:psub(2)+w) = 1;
-linpatch1 = find(mask);
+for itr=1:10^3
+    w = (psz-1)/2;
+    psub = zeros(2,1);
+    [psub(1),psub(2)] = ind2sub(size(image),plin);
+    mask = zeros(size(image));
+    mask(psub(1)-w:psub(1)+w,psub(2)-w:psub(2)+w) = 1;
+    linpatch1 = find(mask);
+end
 toc
 
 % 2. getLinearPatchIndices
 tic
-linpatch2 = getLinearPatchIndices(psz,plin,size(image));
+for itr=1:10^3
+    linpatch2 = getLinearPatchIndices(psz,plin,size(image));
+end
 toc
 
+% 3. getPatch
+tic
+for itr=1:10^3
+    [linpatch3,rows,cols] = getPatch(size(image),plin,psz);
+end
+toc
 
 % call
 if all(linpatch1(:)==linpatch2(:))
