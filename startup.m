@@ -18,4 +18,4 @@ javaaddpath('AutoShared/Libraries/poi_library/xmlbeans-2.3.0.jar');
 javaaddpath('AutoShared/Libraries/poi_library/dom4j-1.6.1.jar');
 javaaddpath('AutoShared/Libraries/poi_library/stax-api-1.0.1.jar');
 
-setenv('PATH',['/usr/locla/bin',getenv('PATH')])
+setenv('PATH',['/usr/local/bin:',getenv('PATH')])
